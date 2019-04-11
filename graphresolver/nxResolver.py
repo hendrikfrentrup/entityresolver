@@ -22,7 +22,7 @@ class nxResolver:
             self.G.add_node(i,  ip=record['ip'], 
                                 mac=record['mac'], 
                                 hostname=record['hostname'], 
-                                serial_no=record['mac'],
+                                serial_no=record['serial_no'],
                                 source=record['source']
                             )
             n_nodes+=1
@@ -57,11 +57,15 @@ class nxResolver:
                         # TODO: add an edge type, e.g. ip-match/mac-match
         print(f"{n_edges} edges created, out of a possible {n_comparisons}")
 
-    def compute_connComponents(self):
-        pass
-
-    def generate_taggedDict(self):
-        pass
+    # def compute_connComponents(self):
+        
+    def generate_conncomp_as_dict(self):
+        # with open('mycsvfile.csv', 'wb') as f:
+        id=0
+        for cc in nx.connected_components(self.G):
+            for n in cc:
+                print(id,self.G.node[n])
+            id+=1
 
 
 def csv2dict(csv_file):
@@ -72,8 +76,10 @@ def csv2dict(csv_file):
             out_dict[i]=row
     return out_dict
 
-def dict2csv(out_file):
-    pass
+def dict2csv(out_dict, out_file="resolved_records.csv"):
+    with open(out_file, 'w') as csv_file:
+        fieldnames = out_dict[0].keys()
+        writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
 
 def main():
     # read csv filename from args
@@ -91,6 +97,8 @@ def main():
             
             n, e = resolver.get_graph_stats()
             print(f"currently in graph: {n} nodes, {e} edges")
+
+            resolver.generate_conncomp_as_dict()
         
         else:
             print("File not found.")
