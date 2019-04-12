@@ -41,6 +41,5 @@ class test_nxResolver(unittest.TestCase):
         assert self.resolver.create_nodes_from_dict(record_dict) == '1 nodes added to graph.'
         assert self.graph.nodes._nodes == record_dict
 
-
-    #    def test_create_edges_from_dict(self):
-#        assert self.resolver.create_edges_from_dict() == None
+    def test_generate_edges(self):
+        assert self.resolver.generate_edges() == '0 edges created, out of a possible 0'
