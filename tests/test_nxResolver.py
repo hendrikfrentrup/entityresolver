@@ -1,13 +1,6 @@
-import os
-import sys
-
-from pbx_gs_python_utils.utils.Dev import Dev
+import sys ; sys.path.append('..')
 
 from graphresolver.Data_CSV import Data_CSV
-
-sys.path.insert(0, os.path.abspath(
-    os.path.join(os.path.dirname(__file__), '..')))
-
 import unittest
 from graphresolver.nxResolver import nxResolver
 
