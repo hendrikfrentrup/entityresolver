@@ -26,7 +26,7 @@ class nxResolver:
                                 source=record['source']
                             )
             n_nodes+=1
-        print(f"{n_nodes} nodes added to graph.")
+        return f"{n_nodes} nodes added to graph."
 
 
     def generate_edges(self):
