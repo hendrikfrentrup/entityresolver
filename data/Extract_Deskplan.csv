@@ -1,0 +1,11 @@
+Active,ID,Last Name,First Name,Title,Department,Seat,Floor,Site,Phone,E-mail,Occupant Type,Move Type,Move Date
+1,Shabbir.Brian,Brian,Shabbir,,(None),,,,,,Not Seated,,
+1,Alizee.Bob,Bob,Alizee,,(None),,,,,Blah@CarPool.com,Not Seated,,
+1,Stuart.Sarah,Sarah,Stuart,,(None),"LG-16-12, LG-16-12","Lower Ground Floor (future), Lower Ground Floor","Big House, Big House",,Blah@CarPool.com,Multi Seat,,
+1,Ruslan.Ethel,Ethel,Ruslan,Perl Developer,(None),,,,,Blah@CarPool.com,Not Seated,,
+1,Toyin.Tony,Tony,Toyin,,(None),UG-03-04,Upper Ground Floor,Big House,,Blah@CarPool.com,Seated,,
+1,Wayne.Sarah,Sarah,Wayne,,(None),,,,,Blah@CarPool.com,Not Seated,,
+1,Gone.Bryan,Bryan,Gone,,(None),UG-09-01,Upper Ground Floor,Big House,,Blah@CarPool.com,Seated,,
+1,Moon.May,May,Moon,Database Administrator,(None),,,,,Blah@CarPool.com,Not Seated,,
+1,Bob.Geoff,Geoff,Bob,,(None),"G-17-05, G-17-05","Ground Floor, Ground Floor (future)","Big House, Big House",,Blah@CarPool.com,Multi Seat,,
+1,Smith.Tony,Tony,Smith,,(None),G-03-05,Ground Floor,Big House,,Blah@CarPool.com,Seated,,

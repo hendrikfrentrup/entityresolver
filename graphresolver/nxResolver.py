@@ -26,7 +26,7 @@ class nxResolver:
                                 source=record['source']
                             )
             n_nodes+=1
-        print(f"{n_nodes} nodes added to graph.")
+        return f"{n_nodes} nodes added to graph."
 
 
     def generate_edges(self):
@@ -55,7 +55,7 @@ class nxResolver:
                         n_edges+=1
                         g.add_edge(i,j)
                         # TODO: add an edge type, e.g. ip-match/mac-match
-        print(f"{n_edges} edges created, out of a possible {n_comparisons}")
+        return f"{n_edges} edges created, out of a possible {n_comparisons}"
 
     # def compute_connComponents(self):
         
