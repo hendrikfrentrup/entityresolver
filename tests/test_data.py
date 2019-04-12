@@ -20,3 +20,13 @@ rec_dict = {0:
                         'owner': '',
                         'source': 'DT'}
         }
+
+{
+'entity_id':'0',
+'ip': '',
+'mac': '4c:31:07:e9:9a:90',
+'hostname': 'bdruhan1m@1688.com',
+'serial_no': 'U0UOS9R43J',
+'owner': 'Brittaney Druhan',
+'source': 'LD'
+}

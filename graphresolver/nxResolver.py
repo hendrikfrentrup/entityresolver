@@ -24,7 +24,6 @@ class nxResolver:
             n_nodes+=1
         return f"{n_nodes} nodes added to graph."
 
-
     def generate_edges(self):
         # make sure there are nodes loaded
         g=self.G
@@ -53,17 +52,24 @@ class nxResolver:
                         # TODO: add an edge type, e.g. ip-match/mac-match
         return f"{n_edges} edges created, out of a possible {n_comparisons}"
 
-    # def compute_connComponents(self):
-        
-    def generate_conncomp_as_dict(self):
-        # with open('mycsvfile.csv', 'wb') as f:
-        id=0
+    @staticmethod
+    def tag_node_as_dict(entity_id, node):
+        res={'entity_id':entity_id }
+        for k in node.keys():
+            res[k]=node[k]
+        return res
+
+    def generate_conncomponents(self):
+        self.tagged_records=[]
+        entity_id=0
         for cc in nx.connected_components(self.G):
             for n in cc:
-                print(id,self.G.node[n])
-            id+=1
+                self.tagged_records.append(self.tag_node_as_dict(entity_id,self.G.node[n]))
+            entity_id+=1
+        return f"{len(self.tagged_records)} records tagged with {entity_id-1} entities"
+        
 
-
+# to be deleted as in Data_CSV
 def csv2dict(csv_file):
     out_dict={}
     with open(csv_file) as csv_records:
@@ -72,8 +78,12 @@ def csv2dict(csv_file):
             out_dict[i]=row
     return out_dict
 
-def dict2csv(out_dict, out_file="resolved_records.csv"):
+# to be moved to Data_CSV
+def records2csv(records, out_file="resolved_records.csv"):
     with open(out_file, 'w') as csv_file:
-        fieldnames = out_dict[0].keys()
+        fieldnames = records[0].keys()
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)
+        writer.writeheader()
+        for r in records:
+            writer.writerow(r)
 

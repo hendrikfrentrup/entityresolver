@@ -26,11 +26,11 @@ class test_nxResolver(unittest.TestCase):
 
         assert self.resolver.create_nodes_from_dict({})          == '0 nodes added to graph.'
 
-        record_dict = {'node_1': { 'ip'         : 'ip'      ,
+        record_dict = {'node_1': {  'ip'         : 'ip'      ,
                                     'mac'       : 'mac'     ,
-                                   'hostname'   : 'hostname',
-                                   'serial_no'  :'serial_no',
-                                   'source'     :'source'   }}
+                                    'hostname'   : 'hostname',
+                                    'serial_no'  :'serial_no',
+                                    'source'     :'source'   } }
         assert self.resolver.create_nodes_from_dict(record_dict) == '1 nodes added to graph.'
         assert self.graph.nodes._nodes == record_dict
 
@@ -40,3 +40,24 @@ class test_nxResolver(unittest.TestCase):
         data = Data_CSV().csv_2_dict('Resolver_Data.csv')
         self.resolver.create_nodes_from_dict(data)
         assert self.resolver.generate_edges() == '6 edges created, out of a possible 16'
+
+    def test_tag_node_as_dict(self):
+        record_dict = {99: { 'ip': 'ip',
+                            'mac': 'mac',
+                            'hostname': 'hostname',
+                            'serial_no': 'serial_no',
+                            'source': 'source'} }
+
+        self.resolver.create_nodes_from_dict(record_dict)
+
+        out_dict = {'entity_id': 0}
+        for k,v in record_dict[99].items(): out_dict[k]=v
+                                                                         
+        assert self.resolver.tag_node_as_dict(0, self.graph.node[99]) == out_dict
+
+    def test_generate_conncomponents(self):
+        data = Data_CSV().csv_2_dict('Tiny_Test_Data.csv')
+        self.resolver.create_nodes_from_dict(data)
+
+        assert self.resolver.generate_edges() == '6 edges created, out of a possible 36'
+        assert self.resolver.generate_conncomponents() == '6 records tagged with 3 entities'
