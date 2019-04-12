@@ -3,6 +3,8 @@ import sys
 
 from pbx_gs_python_utils.utils.Dev import Dev
 
+from graphresolver.Data_CSV import Data_CSV
+
 sys.path.insert(0, os.path.abspath(
     os.path.join(os.path.dirname(__file__), '..')))
 
@@ -43,3 +45,7 @@ class test_nxResolver(unittest.TestCase):
 
     def test_generate_edges(self):
         assert self.resolver.generate_edges() == '0 edges created, out of a possible 0'
+
+        data = Data_CSV().csv_2_dict('Resolver_Data.csv')
+        self.resolver.create_nodes_from_dict(data)
+        assert self.resolver.generate_edges() == '6 edges created, out of a possible 16'

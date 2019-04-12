@@ -17,7 +17,7 @@ class test_Data_CSV(TestCase):
 
     def test_csv_files(self):
         files = self.data_csv.csv_files()
-        assert set(files) == {'Extract_AD.csv', 'Extract_DT.csv','Extract_Landesk.csv', 'Extract_AV.csv', 'Extract_Deskplan.csv'}
+        assert set(files) == { 'Resolver_Data.csv','Extract_AD.csv', 'Extract_DT.csv','Extract_Landesk.csv', 'Extract_AV.csv', 'Extract_Deskplan.csv'}
         for file in files.values():
             assert Files.exists(file)
 
