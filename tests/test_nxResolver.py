@@ -1,5 +1,3 @@
-import sys ; sys.path.append('..')
-
 from graphresolver.Data_CSV import Data_CSV
 import unittest
 from graphresolver.nxResolver import nxResolver
