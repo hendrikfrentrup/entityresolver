@@ -29,7 +29,11 @@ def main():
             print(f"currently in graph: {n} nodes, {e} edges")
 
             # compute CCs
-            resolver.generate_conncomponents()
+            msg = resolver.generate_conncomponents()
+            print(msg)
+
+            msg = resolver.merge_records()
+            print(msg)
 
             # generate a list of tagged records & export as csv
             if args.out_file:

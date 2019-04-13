@@ -53,10 +53,10 @@ class nxResolver:
         return f"{n_edges} edges created, out of a possible {n_comparisons}"
 
     @staticmethod
-    def tag_node_as_dict(entity_id, node):
+    def tag_node_as_dict(entity_id, node_dict):
         res={'entity_id':entity_id }
-        for k in node.keys():
-            res[k]=node[k]
+        for k in node_dict.keys():
+            res[k]=node_dict[k]
         return res
 
     def generate_conncomponents(self):
@@ -67,7 +67,21 @@ class nxResolver:
                 self.tagged_records.append(self.tag_node_as_dict(entity_id,self.G.node[n]))
             entity_id+=1
         return f"{len(self.tagged_records)} records tagged with {entity_id-1} entities"
-        
+
+    # a lot of repeated code, should be consolidated
+    def merge_records(self):
+        self.consolidated_entities=[]
+        entity_id=0
+        keys=self.G.node[0].keys()
+        for cc in nx.connected_components(self.G):
+            merge={"entity_id":entity_id}
+            for k in keys:
+                merge[k]=",".join([self.G.node[n][k] for n in cc])
+
+            self.consolidated_entities.append(self.tag_node_as_dict(entity_id, merge))
+            entity_id+=1
+        return f"merged {self.G.number_of_nodes()} records into {len(self.consolidated_entities)} merged entities"        
+
 
 # to be deleted as in Data_CSV
 def csv2dict(csv_file):

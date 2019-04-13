@@ -61,3 +61,9 @@ class test_nxResolver(unittest.TestCase):
 
         assert self.resolver.generate_edges() == '6 edges created, out of a possible 36'
         assert self.resolver.generate_conncomponents() == '6 records tagged with 3 entities'
+
+    def test_merge_records(self):
+        data = Data_CSV().csv_2_dict('Tiny_Test_Data.csv')
+        self.resolver.create_nodes_from_dict(data)
+        self.resolver.generate_edges()
+        assert self.resolver.merge_records() == 'merged 6 records into 4 merged entities'
