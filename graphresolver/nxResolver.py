@@ -93,7 +93,7 @@ def csv2dict(csv_file):
     return out_dict
 
 # to be moved to Data_CSV
-def records2csv(records, out_file="resolved_records.csv"):
+def records2csv(records, out_file):
     with open(out_file, 'w') as csv_file:
         fieldnames = records[0].keys()
         writer = csv.DictWriter(csv_file, fieldnames=fieldnames)

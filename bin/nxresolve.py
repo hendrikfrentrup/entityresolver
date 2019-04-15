@@ -10,8 +10,8 @@ def main():
     # read csv filename from args
     parser = argparse.ArgumentParser(description='graph-based Entity Resolution via networkx')
     parser.add_argument('-f', '--file', dest='csv_file', help='provide CSV file of records (with one header line) ')
-    parser.add_argument('-o', '--output', dest='out_file', help='''CSV file with tagged records to be written. 
-                                                                   If not specified, written to resolved_records.csv by default''')
+    parser.add_argument('-t', '--tagged', dest='tagged_file', help='CSV file with tagged records to be written.')
+    parser.add_argument('-m', '--merged', dest='merged_file', help='CSV file with merged entities to be written.')
     args = parser.parse_args()
 
     if args.csv_file:
@@ -33,18 +33,24 @@ def main():
             print(msg)
 
             msg = resolver.merge_records()
-            print(msg)
-
-            # generate a list of tagged records & export as csv
-            if args.out_file:
-                records2csv(resolver.tagged_records, out_file=args.out_file)
-            else:
-                records2csv(resolver.tagged_records)
-        
+            print(msg)        
         else:
             print("File not found.")
     else:
         print("No useful argument given. Get help with option -h/--help.")
+
+    # generate a list of tagged records/merged entities & export as csv
+    if args.tagged_file:
+        records2csv(resolver.tagged_records, out_file=args.tagged_file)
+        print(f"records tagged in {args.tagged_file}.")
+    else:
+        print("No output file specified to produce tagged records")
+
+    if args.merged_file:
+        records2csv(resolver.consolidated_entities, out_file=args.merged_file)
+        print(f"entities merged in {args.merged_file}.")
+    else:
+        print("No output file specified to produce merged entities")
 
     # TODO: add cmdline arg to specify which cols to match on and ignore the rest
 
