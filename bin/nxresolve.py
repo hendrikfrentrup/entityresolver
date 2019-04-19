@@ -35,7 +35,7 @@ def main():
             msg = resolver.merge_records()
             print(msg)        
         else:
-            print("File not found.")
+            print(f"Input CSV File not found: {args.csv_file}")
     else:
         print("No useful argument given. Get help with option -h/--help.")
 

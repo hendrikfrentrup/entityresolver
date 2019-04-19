@@ -1,4 +1,4 @@
-import csv
+import csv # TODO: only dependency on csv module in temporary IO methods at the bottom
 import networkx as nx
 
 
