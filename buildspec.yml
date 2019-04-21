@@ -3,7 +3,8 @@ phases:
   install:
     commands:
       - pip3 install networkx
-      - pip3 install pandas, numpy
+      - pip3 install pandas
+      - pip3 install numpy
   build:
     commands:
       - echo "**** Starting build"
