@@ -19,7 +19,7 @@ class nxResolver:
                                 mac=record['mac'], 
                                 hostname=record['hostname'], 
                                 serial_no=record['serial_no'],
-                                source=record['source']
+                                source_name=record['source_name']
                             )
             n_nodes+=1
         return f"{n_nodes} nodes added to graph."
@@ -82,6 +82,7 @@ class nxResolver:
             entity_id+=1
         return f"merged {self.G.number_of_nodes()} records into {len(self.consolidated_entities)} merged entities"        
 
+# TODO: check for the correct field names before creating graph
 
 # to be deleted as in Data_CSV
 def csv2dict(csv_file):

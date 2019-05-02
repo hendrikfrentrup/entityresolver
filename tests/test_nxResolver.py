@@ -30,7 +30,7 @@ class test_nxResolver(unittest.TestCase):
                                     'mac'       : 'mac'     ,
                                     'hostname'   : 'hostname',
                                     'serial_no'  :'serial_no',
-                                    'source'     :'source'   } }
+                                    'source_name'     :'source_name'   } }
         assert self.resolver.create_nodes_from_dict(record_dict) == '1 nodes added to graph.'
         assert self.graph.nodes._nodes == record_dict
 
@@ -46,7 +46,7 @@ class test_nxResolver(unittest.TestCase):
                             'mac': 'mac',
                             'hostname': 'hostname',
                             'serial_no': 'serial_no',
-                            'source': 'source'} }
+                            'source_name': 'source_name'} }
 
         self.resolver.create_nodes_from_dict(record_dict)
 
