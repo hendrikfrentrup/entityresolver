@@ -8,8 +8,6 @@ class test_ADTransformer(unittest.TestCase):
         self.transformer = ADTransformer()
 
     def test__init__(self):
-        print(type(record_schema))
-        assert self.transformer.schema == record_schema
         assert set() == self.transformer.mapped_columns.intersection(self.transformer.unmapped_columns)
         for field in record_schema:
             assert field in tuple(self.transformer.mapped_columns.union(self.transformer.unmapped_columns))
@@ -19,3 +17,6 @@ class test_ADTransformer(unittest.TestCase):
             assert "src_col" in keys
             assert "dest_col" in keys
             assert "transformation" in keys
+
+    def test_transform(self):
+        pass
