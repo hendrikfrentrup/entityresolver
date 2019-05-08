@@ -18,20 +18,28 @@ def main():
         if os.path.isfile(args.csv_file):
             # call csv2dict to generate dict of parsed records
             records = csv2dict(args.csv_file)
+            print(f"read {len(records.keys())} records from {args.csv_file}.")
 
             # instiatate nxResolver
             resolver = nxResolver()
-            resolver.create_nodes_from_dict(records)
+            print("creating nodes from records")
+            msg = resolver.create_nodes_from_dict(records)
+            print(f"{msg}")
+
+            print("creating edges in graph")
             # create edges from dict
-            resolver.generate_edges()
+            msg = resolver.generate_edges()
+            print(f"{msg}")
             
             n, e = resolver.get_graph_stats()
             print(f"currently in graph: {n} nodes, {e} edges")
 
             # compute CCs
+            print("generating entities")
             msg = resolver.generate_conncomponents()
             print(msg)
 
+            print("merging records")
             msg = resolver.merge_records()
             print(msg)        
         else:
