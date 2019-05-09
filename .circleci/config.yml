@@ -6,9 +6,9 @@ jobs:
     steps:
       - checkout
       - run:
-          command: |  # use pipenv to install dependencies
-            pip install networkx
-            pip install pandas
-            pip install numpy
+          # command: |
+          #   pip install networkx
+          #   pip install pandas
+          #   pip install numpy
       - run: ls .
       - run: echo "hello world"
