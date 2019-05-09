@@ -1,0 +1,14 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python:3.6.5
+    steps:
+      - checkout
+      - run:
+          command: |  # use pipenv to install dependencies
+            pip install networkx
+            pip install pandas
+            pip install numpy
+      - run: ls .
+      - run: echo "hello world"
