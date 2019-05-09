@@ -5,7 +5,7 @@ jobs:
       - image: circleci/python:3.6.5
     steps:
       - checkout
-      - run:
+      # - run:
           # command: |
           #   pip install networkx
           #   pip install pandas
