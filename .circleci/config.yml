@@ -29,4 +29,5 @@ jobs:
       #     command: |
       #       pwd
       #       ls .
-      - run: pipenv run py.test -v -s -W ignore::DeprecationWarning tests/
+      - run: pipenv run py.test -v -s -W -k transformer ignore::DeprecationWarning tests/
+      - run: pipenv run py.test -v -s -W -k nxResolver ignore::DeprecationWarning tests/
