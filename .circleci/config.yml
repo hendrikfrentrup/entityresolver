@@ -9,20 +9,16 @@ jobs:
         environment: # environment variables for primary container
           PIPENV_VENV_IN_PROJECT: true
     steps:
-      - run: 
-          command: |
-            pwd
-            ls .
       - checkout
       - run: sudo chown -R circleci:circleci /usr/local/bin
       - run: sudo chown -R circleci:circleci /usr/local/lib/python3.6/site-packages
       # - restore_cache:  # ensure this step occurs *before* installing dependencies
       #     key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
-      # - run:
-      #     command: |
-      #       sudo pip install --upgrade pip
-      #       sudo pip install pipenv
-      #       pipenv install
+      - run:
+          command: |
+            sudo pip install --upgrade pip
+            sudo pip install pipenv
+            pipenv install
       # - save_cache:
       #     key: deps9-{{ .Branch }}-{{ checksum "Pipfile.lock" }}
       #     paths:
