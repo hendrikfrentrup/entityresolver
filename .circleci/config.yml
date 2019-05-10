@@ -11,8 +11,6 @@ jobs:
       - run:
           command: |
             sudo pip install pipenv
-            pipenv install networkx
-            pipenv install pandas
-            pipenv install numpy
+            pipenv install
       - run: ls .
       # - run: pytest -v -s -W ignore::DeprecationWarning tests/
