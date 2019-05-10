@@ -29,4 +29,4 @@ jobs:
       #     command: |
       #       pwd
       #       ls .
-      - run: pytest -v -s -W ignore::DeprecationWarning tests/
+      - run: pipenv run py.test -v -s -W ignore::DeprecationWarning tests/
