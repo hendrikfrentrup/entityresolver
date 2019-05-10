@@ -8,10 +8,11 @@ jobs:
       - image: circleci/python:3.6.5
     steps:
       - checkout
-      # - run:
-          # command: |
-          #   pip install networkx
-          #   pip install pandas
-          #   pip install numpy
+      - run:
+          command: |
+            sudo pip install pipenv
+            pipenv install networkx
+            pipenv install pandas
+            pipenv install numpy
       - run: ls .
-      - run: echo "hello world"
+      # - run: pytest -v -s -W ignore::DeprecationWarning tests/
