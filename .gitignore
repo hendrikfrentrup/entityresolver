@@ -108,3 +108,4 @@ venv.bak/
 .testmondata
 .tmontmp
 temp/
+.DS_Store
