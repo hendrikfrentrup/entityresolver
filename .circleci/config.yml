@@ -26,9 +26,4 @@ jobs:
             - ".venv"
             - "/usr/local/bin"
             - "/usr/local/lib/python3.6/site-packages"
-      # - run: 
-      #     command: |
-      #       pwd
-      #       ls .
-      - run: pipenv run py.test -v -s -k transformer -W ignore::DeprecationWarning tests/
-      - run: pipenv run py.test -v -s -k nxResolver  -W ignore::DeprecationWarning tests/
+      - run: pipenv run py.test -v -s  -W ignore::DeprecationWarning tests/
